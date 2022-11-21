@@ -144,3 +144,83 @@ makeBroccoli()
 // Bonus 2 - Promise all
 // ...
 
+// brusselsSprouts
+
+// const step0 = await obtainInstruction('brusselsSprouts', 0)
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>${step0}</li>`
+
+// const step1 = await obtainInstruction('brusselsSprouts', 1)
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>${step1}</li>`  
+
+// const step2 = await obtainInstruction('brusselsSprouts', 2)
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>${step2}</li>` 
+
+// const step3 = await obtainInstruction('brusselsSprouts', 3)
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>${step3}</li>` 
+
+// const step4 = await obtainInstruction('brusselsSprouts', 4)
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>${step4}</li>` 
+
+// const step5 = await obtainInstruction('brusselsSprouts', 5)
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>${step5}</li>` 
+
+// const step6 = await obtainInstruction('brusselsSprouts', 6)
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>${step6}</li>` 
+// document.querySelector("#brusselsSprouts").innerHTML += `<li>Broccoli is ready!</li>`
+// document.querySelector('#brusselsSprouts').removeAttribute("hidden")
+// }
+
+// //OPTION 1
+const step0 = obtainInstruction("brusselsSprouts",0)
+const step1 = obtainInstruction("brusselsSprouts",1)
+const step2 = obtainInstruction("brusselsSprouts",2)
+const step3 = obtainInstruction("brusselsSprouts",3)
+const step4 = obtainInstruction("brusselsSprouts",4)
+const step5 = obtainInstruction("brusselsSprouts",5)
+const step6 = obtainInstruction("brusselsSprouts",6)
+const step7 = obtainInstruction("brusselsSprouts",7)
+
+// Promise.all([step0,step1,step2,step3,step4,step5,step6,step7]).then(
+//   valorDelArray => {
+//     valorDelArray.forEach( instruccion  =>{
+//       document.querySelector("#brusselsSprouts")
+//       .innerHTML += `<li>${instruccion}</li>`
+//     })
+
+//     document.querySelector("#brusselsSprouts").innerHTML += `<li>brusselsSprouts is ready!</li>`
+//     document.querySelector('#brusselsSproutsImg').removeAttribute("hidden")
+
+//   }
+// ).catch( error => console.log(error))
+
+async function makeBrusselsSprouts() {
+  // try & catch
+  try {
+    // crear variable para hacer generar el constructor con la palabra PROMISE y le encadenamos el metodo .all() con todas las variables definidas arriba. Recuerda, tenemos qe ESPERAR a todas estas llamadas.
+    const valores = await Promise.all([
+     step0,
+     step1,
+     step2,
+     step3,
+     step4,
+     step5,
+     step6,
+     step7
+    ]);
+
+    valores.forEach((instruccionDePaso) => {
+      document.querySelector(
+        "#brusselsSprouts"
+      ).innerHTML += `<li>${instruccionDePaso}</li>`;
+    });
+    // Se encarga de añadir texto a pelo
+    document.querySelector(
+      "#brusselsSprouts"
+    ).innerHTML += `<li>Yo yo yo my homie them brussels sprouts be ready man, time to eat some grub!</li>`;
+    // Se encarga de quitar la img
+    document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+  } catch (error) {
+    console.log(error);
+  }
+}
+makeBrusselsSprouts();
